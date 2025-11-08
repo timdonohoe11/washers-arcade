@@ -439,12 +439,24 @@ function showWashPopup() {
         }
         
         // Reset GIF by reloading it (forces restart of animation)
-        const originalSrc = washVideo.src;
+        // Store the original source once so we can reliably restart the animation
+        if (!washVideo.dataset.originalSrc) {
+            washVideo.dataset.originalSrc = washVideo.src;
+        }
+
+        const originalSrc = washVideo.dataset.originalSrc;
         const timestamp = new Date().getTime();
+        const isDataUrl = originalSrc.startsWith('data:');
+
+        // Clearing the src forces the browser to restart the animation on reassignment
         washVideo.src = '';
         setTimeout(() => {
-            // Add timestamp to force reload
-            washVideo.src = originalSrc.split('?')[0] + '?t=' + timestamp;
+            // For file/network URLs add a cache-busting query param, but data URLs can't take query strings
+            if (isDataUrl) {
+                washVideo.src = originalSrc;
+            } else {
+                washVideo.src = originalSrc.split('?')[0] + '?t=' + timestamp;
+            }
         }, 10);
         
         // Entry directions (coming into center)
