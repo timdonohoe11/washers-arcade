@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WASHERS - ARCADE SCOREBOARD</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="theme-space">
+    <div class="container">
+        <div class="top-bar">
+            <button class="icon-button" id="settingsBtn" aria-label="Settings">⚙️</button>
+            <button class="icon-button" id="resetBtn" aria-label="Reset Game">↻</button>
+    </div>
+
+        <div class="teams-container">
+            <div class="team-card teal" id="tealCard" data-team="teal">
+                <div class="team-name">TEAL</div>
+                <div class="score" id="tealScore">0</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="tealProgress" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="team-card white" id="whiteCard" data-team="white">
+                <div class="team-name">WHITE</div>
+                <div class="score" id="whiteScore">0</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="whiteProgress" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="instruction" id="instruction">Select a team to score</div>
+
+        <div class="buttons-container">
+            <button class="score-button wash" id="washBtn" data-points="0">
+                <span class="emoji">🧹</span>
+                <span>WASH</span>
+            </button>
+            <button class="score-button number" data-points="1">1</button>
+            <button class="score-button number" data-points="2">2</button>
+            <button class="score-button number" data-points="3">3</button>
+            <button class="score-button number" data-points="4">4</button>
+            <button class="score-button number" data-points="5">5</button>
+            <button class="score-button number" data-points="6">6</button>
+            <button class="score-button number" data-points="7">7</button>
+            <button class="score-button number" data-points="8">8</button>
+            <button class="score-button number" data-points="9">9</button>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <button class="close-button" id="closeSettings">&times;</button>
+            <h2>Settings</h2>
+            <div class="theme-selector">
+                <button class="theme-button active" data-theme="space">🌌 Space</button>
+                <button class="theme-button" data-theme="clouds">☁️ Clouds</button>
+                <button class="theme-button" data-theme="sunrise">🌅 Sunrise</button>
+        </div>
+    </div>
+            </div>
+
+    <!-- Win Overlay -->
+    <div class="win-overlay" id="winOverlay">
+        <div class="win-message" id="winMessage"></div>
+        <div class="shutout-message" id="shutoutMessage">SHUTOUT!</div>
+        <div class="win-by-2-message" id="winBy2Message">WIN BY 2!</div>
+        <div class="win-subtitle" id="winSubtitle"></div>
+        <button class="icon-button" id="restartAfterWin" aria-label="New Game">↻</button>
+    </div>
+
+    <!-- WASH Popup -->
+    <div class="wash-popup" id="washPopup">
+        <h2>🧹 WASH!</h2>
+        <p>Canceled! No points added.</p>
+            </div>
+
+    <!-- WASH GIF (hidden, displays when WASH is clicked) -->
+    <img id="washVideo" src="assets/wash-video.gif" alt="WASH Animation" style="display: none;">
+
+    <script src="js/app.js"></script>
+</body>
+</html>
